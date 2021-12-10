@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Statistique } from '../models/statistique'
+import { StatistiqueService } from '../statistique.service'
 
 @Component({
   selector: 'app-nouvelle-stat',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nouvelle-stat.component.css']
 })
 export class NouvelleStatComponent implements OnInit {
+  unIdentifiant!: string
+  unTitre!: string
+  uneValeur!: string
 
-  constructor() { }
+  constructor (private singletonStat: StatistiqueService) {}
 
-  ngOnInit(): void {
+  creerStat () {
+    let nouvelleStat = new Statistique(
+      this.unTitre + Math.random(),
+      this.unTitre,
+      this.uneValeur
+    )
+
+    this.singletonStat.tabStat.push(nouvelleStat)
   }
 
+  ngOnInit (): void {}
 }

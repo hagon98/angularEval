@@ -1,1 +1,9 @@
-<p>nouvelle-stat works!</p>
+<form (ngSubmit)="creerStat()">
+
+
+    <input type="text" [(ngModel)]="unTitre" name="titre" placeholder="Titre" /><br />
+    <input type="text" [(ngModel)]="uneValeur" name="valeur" placeholder="Valeur" /><br />
+
+    <input type="submit" value='Créer' />
+
+</form>
