@@ -1,5 +1,13 @@
-import { Injectable } from '@angular/core'
+import { HttpClient, HttpClientModule } from '@angular/common/http'
+import { Injectable, Type } from '@angular/core'
+
 import { Statistique } from './models/statistique'
+
+type donneServ = {
+  id: string
+  title: string
+  value: string
+}
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +15,7 @@ import { Statistique } from './models/statistique'
 export class StatistiqueService {
   tabStat: Statistique[] = []
   crossStat = new Statistique('deddcsdf-5545', 'Cross', '41M')
-  constructor () {
+  constructor (private http: HttpClient) {
     let statBasket = new Statistique(
       'beshfh-10-qdhgx',
       'Basket-ball Statistique',
@@ -24,5 +32,18 @@ export class StatistiqueService {
     }, 4000)
 
     this.tabStat.push(statBasket, statAthle)
+  }
+  lancerRecherche () {
+    this.http
+      .get(` https://stats.naminilamy.fr`)
+      .toPromise()
+      .then(data => {
+        let donneesServeur = data as donneServ[]
+
+        this.tabStat.push()
+        for (let d of data as any) {
+          this.tabStat.push(new Statistique(d.id, d.title, d.value))
+        }
+      })
   }
 }
