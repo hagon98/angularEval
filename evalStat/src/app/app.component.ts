@@ -7,11 +7,16 @@ import { Statistique } from './models/statistique'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  statBasket = new Statistique(
-    'beshfh-10-qdhgx',
-    'Basket-ball Statistique',
-    '55M'
-  )
-  statAthle = new Statistique('gdbec-789-xhhx-bdvsh', 'Athlétisme', '45M')
   title = 'evalStat'
+  tabStat: Statistique[] = []
+  constructor () {
+    let statBasket = new Statistique(
+      'beshfh-10-qdhgx',
+      'Basket-ball Statistique',
+      '55M'
+    )
+    let statAthle = new Statistique('gdbec-789-xhhx-bdvsh', 'Athlétisme', '45M')
+
+    this.tabStat.push(statBasket, statAthle)
+  }
 }
