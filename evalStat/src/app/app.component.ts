@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { Statistique } from './models/statistique'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'evalStat';
+  statBasket = new Statistique(
+    'beshfh-10-qdhgx',
+    'Basket-ball Statistique',
+    '55M'
+  )
+  statAthle = new Statistique('gdbec-789-xhhx-bdvsh', 'Athlétisme', '45M')
+  title = 'evalStat'
 }
