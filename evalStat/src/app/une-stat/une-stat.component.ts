@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { Statistique } from '../models/statistique'
 
 @Component({
@@ -8,8 +8,14 @@ import { Statistique } from '../models/statistique'
 })
 export class UneStatComponent implements OnInit {
   @Input() uneStat!: Statistique
-
+  @Output() demandeSuppression = new EventEmitter()
   constructor () {}
 
+  /**
+   * fonction qui permet d'avoir un événement au click
+   */
+  reagirAuClick () {
+    this.demandeSuppression.emit()
+  }
   ngOnInit (): void {}
 }

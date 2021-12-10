@@ -11,4 +11,9 @@ export class AppComponent {
   title = 'evalStat'
 
   constructor (public monService: StatistiqueService) {}
+
+  deleteFilm (uneStat: Statistique) {
+    let index = this.monService.tabStat.indexOf(uneStat)
+    this.monService.tabStat.splice(index, 1)
+  }
 }
