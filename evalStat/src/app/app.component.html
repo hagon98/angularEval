@@ -1,6 +1,8 @@
-<div>
-  <!-- <h2>{{statBasket.unTitre}}</h2> -->
-  <app-une-stat *ngFor="let s of monService.tabStat" [uneStat]="s" (demandeSuppression)="deleteFilm(s)"></app-une-stat>
+<header>
+  <nav>
+    <h3 (click)="naviguer()">Ajouter une stat</h3>
+    <h3 (click)="nouvellePage()">Liste de stats</h3>
 
-
-</div>
+  </nav>
+</header>
+<router-outlet></router-outlet>

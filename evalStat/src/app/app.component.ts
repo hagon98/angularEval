@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { Router } from '@angular/router'
 import { Statistique } from './models/statistique'
 import { StatistiqueService } from './statistique.service'
 
@@ -9,11 +10,13 @@ import { StatistiqueService } from './statistique.service'
 })
 export class AppComponent {
   title = 'evalStat'
+  constructor (private router: Router) {}
 
-  constructor (public monService: StatistiqueService) {}
+  naviguer () {
+    this.router.navigate(['/nouvelle-stat'])
+  }
 
-  deleteFilm (uneStat: Statistique) {
-    let index = this.monService.tabStat.indexOf(uneStat)
-    this.monService.tabStat.splice(index, 1)
+  nouvellePage () {
+    this.router.navigate(['/les-stat'])
   }
 }
